@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var falseButton: UIButton!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
-    var quizBrain : QuizBrain!
+    var quizBrain = QuizBrain()
 
     var myTimer = Timer()
     override func viewDidLoad() {
