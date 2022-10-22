@@ -9,7 +9,7 @@
 import Foundation
 
 struct QuizBrain{
-    let quiz : [Question]! = [
+    let quiz = [
         Question(q: "A slug's blood is green.", a: "True"),
         Question(q: "Approximately one quarter of human bones are in the feet.", a: "True"),
         Question(q: "The total surface area of two human lungs is approximately 70 square metres.", a: "True"),
@@ -23,10 +23,11 @@ struct QuizBrain{
         Question(q: "No piece of square dry paper can be folded in half more than 7 times.", a: "False"),
         Question(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")
     ]
-    var questionNumber : Int! = 0
-    
-    func checkAnswer(_ userAnswer : String) -> Bool{
+    var questionNumber = 0
+    var score = 0
+    mutating func checkAnswer(_ userAnswer : String) -> Bool{
         if quiz[questionNumber].answer == userAnswer{
+            score += 1
             return true
         }else{
             return false
@@ -44,5 +45,8 @@ struct QuizBrain{
         }else{
             questionNumber = 0
         }
+    }
+    func getScore()->Int{
+        return score
     }
 }

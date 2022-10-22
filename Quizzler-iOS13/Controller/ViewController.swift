@@ -9,16 +9,17 @@ class ViewController: UIViewController {
 
     
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var falseButton: UIButton!
-    @IBOutlet weak var trueButton: UIButton!
+    @IBOutlet weak var bottomButton: UIButton!
+    @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var middleButton: UIButton!
     var quizBrain = QuizBrain()
-
     @IBOutlet weak var scoreLabel: UILabel!
     var myTimer = Timer()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        topButton.setTitle("Hello", for: .normal)
         updateView()
     }
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -41,9 +42,12 @@ class ViewController: UIViewController {
     @objc func updateView(){
 
         questionLabel.text = quizBrain.getQuestionText()
-        
-        trueButton.backgroundColor = UIColor.clear
-        falseButton.backgroundColor = UIColor.clear
+        topButton.setTitle(quizBrain.getOptionOne(), for: .normal)
+        middleButton.setTitle(quizBrain.getOptionTwo(), for: .normal)
+        bottomButton.setTitle(quizBrain.getOptionThree(), for: .normal)
+        topButton.backgroundColor = UIColor.clear
+        bottomButton.backgroundColor = UIColor.clear
+        middleButton.backgroundColor = UIColor.clear
         progressBar.progress = quizBrain.getProgress()
         scoreLabel.text = "Score : \(quizBrain.getScore())"
     }
